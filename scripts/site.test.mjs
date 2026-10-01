@@ -12,6 +12,22 @@ const { whatsappUrl, CHAT_MESSAGES } = runInContext(
   context,
 );
 const html = await readFile(new URL("../index.html", import.meta.url), "utf8");
+test("icons are inline vector paths with no emoji or decorative Unicode fallback", () => {
+  assert.doesNotMatch(
+    html,
+    /[\p{Extended_Pictographic}\uFE0F\u2190-\u21FF\u2600-\u27BF]/u,
+  );
+  const icons = [...html.matchAll(/<svg\b([^>]+)>([\s\S]*?)<\/svg\s*>/g)];
+  assert.ok(icons.length > 0, "Page icons must be embedded SVGs");
+  for (const [, attrs, contents] of icons) {
+    assert.match(attrs, /class="icon\b/);
+    assert.match(attrs, /aria-hidden="true"/);
+    assert.match(attrs, /focusable="false"/);
+    assert.match(attrs, /viewBox="0 0 256 256"/);
+    assert.match(contents, /<path\b/);
+    assert.doesNotMatch(contents, /<text\b/);
+  }
+});
 test("purchase links reach the confirmed number with prefilled messages", () => {
   const links = [...html.matchAll(/href="(https:\/\/wa\.me\/[^"]+)"/g)];
   assert.ok(links.length >= 7);

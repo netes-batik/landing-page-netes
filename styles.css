@@ -150,8 +150,17 @@ summary:focus-visible {
   align-items: center;
   gap: 22px;
 }
-.header-contact span {
-  font-size: 22px;
+.icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  fill: currentColor;
+  pointer-events: none;
+}
+.header-contact .icon {
+  width: 20px;
+  height: 20px;
 }
 .menu-toggle {
   display: none;
@@ -208,9 +217,9 @@ summary:focus-visible {
     background 0.2s,
     transform 0.2s;
 }
-.button > span {
-  font-size: 21px;
-  line-height: 1;
+.button > .icon {
+  width: 20px;
+  height: 20px;
 }
 .button:hover {
   background: #1f3b2c;
@@ -227,8 +236,9 @@ summary:focus-visible {
   border-bottom: 1px solid var(--line);
   padding-block: 8px;
 }
-.text-link > span {
-  font-size: 19px;
+.text-link > .icon {
+  width: 18px;
+  height: 18px;
 }
 .text-link:hover {
   border-color: var(--accent);
@@ -264,9 +274,9 @@ summary:focus-visible {
   font-size: 13px;
 }
 .quality-symbol {
-  font-size: 30px;
+  width: 30px;
+  height: 30px;
   color: var(--accent);
-  font-family: var(--serif);
 }
 .qualities strong {
   display: block;
@@ -339,7 +349,6 @@ summary:focus-visible {
   height: 48px;
   width: 48px;
   flex-shrink: 0;
-  font-size: 24px;
   transition:
     background 0.2s,
     color 0.2s;
@@ -481,12 +490,12 @@ summary:focus-visible {
 .faq-list summary::-webkit-details-marker {
   display: none;
 }
-.faq-list summary > span {
-  font-size: 22px;
-  font-weight: 300;
+.faq-list summary > .icon {
+  width: 20px;
+  height: 20px;
   transition: transform 0.2s;
 }
-.faq-list details[open] summary > span {
+.faq-list details[open] summary > .icon {
   transform: rotate(45deg);
 }
 .faq-list details p {
@@ -633,18 +642,14 @@ summary:focus-visible {
     width: 44px;
     height: 44px;
     cursor: pointer;
+    color: var(--ink);
   }
-  .menu-toggle span {
-    height: 1px;
-    width: 18px;
-    background: var(--ink);
-    transition: transform 0.2s;
+  .menu-toggle .menu-close,
+  .menu-toggle[aria-expanded="true"] .menu-open {
+    display: none;
   }
-  .menu-toggle[aria-expanded="true"] span:first-child {
-    transform: translateY(3.5px) rotate(45deg);
-  }
-  .menu-toggle[aria-expanded="true"] span:last-child {
-    transform: translateY(-3.5px) rotate(-45deg);
+  .menu-toggle[aria-expanded="true"] .menu-close {
+    display: block;
   }
   .mobile-nav {
     padding: 0 20px 20px;
@@ -708,9 +713,8 @@ summary:focus-visible {
     font-size: 12px;
   }
   .quality-symbol {
-    font-size: 25px;
-    width: 23px;
-    text-align: center;
+    width: 26px;
+    height: 26px;
   }
   .qualities strong {
     font-size: 10px;
@@ -758,7 +762,6 @@ summary:focus-visible {
   .product-arrow {
     width: 44px;
     height: 44px;
-    font-size: 22px;
   }
   .pricing {
     grid-template-columns: 1fr;
