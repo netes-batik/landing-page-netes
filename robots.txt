@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://adittamavincent.my.id/netes/sitemap.xml

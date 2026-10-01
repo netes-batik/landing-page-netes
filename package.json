@@ -1,0 +1,16 @@
+{
+  "name": "netes-batik",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A lightweight static storefront for Netes Batik",
+  "scripts": {
+    "dev": "node scripts/serve.mjs",
+    "build": "node scripts/build.mjs",
+    "preview": "node scripts/serve.mjs dist",
+    "test": "node --test scripts/site.test.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
